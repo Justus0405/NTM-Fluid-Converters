@@ -4,9 +4,9 @@
      <!-- Discord Badge -->
     <a href="https://discord.justus0405.com/"><img src="https://img.shields.io/discord/1370519315400495234?logo=Discord&logoColor=1d2d41&colorA=000000&colorB=1d2d41&style=for-the-badge"></a>
      <!-- Modrinth Badge -->
-    <a href="https://modrinth.com/mod/ntm-fluid-converters"><img src="https://img.shields.io/modrinth/dt/PLACEHOLDER?logo=Modrinth&logoColor=1d2d41&colorA=000000&colorB=1d2d41&style=for-the-badge"></a>
+    <a href="https://modrinth.com/mod/ntm-fluid-converters"><img src="https://img.shields.io/modrinth/dt/n0TZ9qTo?logo=Modrinth&logoColor=1d2d41&colorA=000000&colorB=1d2d41&style=for-the-badge"></a>
      <!-- Curseforge Badge -->
-    <a href="https://www.curseforge.com/minecraft/mc-mods/ntm-fluid-converters"><img src="https://img.shields.io/curseforge/dt/PLACEHOLDER?logo=Curseforge&logoColor=1d2d41&colorA=000000&colorB=1d2d41&style=for-the-badge"></a>
+    <a href="https://www.curseforge.com/minecraft/mc-mods/ntm-fluid-converters"><img src="https://img.shields.io/curseforge/dt/1489676?logo=Curseforge&logoColor=1d2d41&colorA=000000&colorB=1d2d41&style=for-the-badge"></a>
     <!-- Github Badge -->
     <a href="https://github.com/Justus0405/NTM-Fluid-Converters"><img src="https://img.shields.io/badge/Github-100000?logo=Github&logoColor=1d2d41&colorA=000000&colorB=1d2d41&style=for-the-badge"></a>
 </p>
