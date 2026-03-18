@@ -1,5 +1,9 @@
 // Add any additional repositories for your dependencies here.
 
 repositories {
-
+    // JitPack is needed to resolve the HBM Nuclear Tech Mod dependency from GitHub.
+    maven {
+        name = "JitPack"
+        url = "https://jitpack.io"
+    }
 }

@@ -34,5 +34,18 @@
  * For more details, see https://docs.gradle.org/8.0.1/userguide/java_library_plugin.html#sec:java_library_configurations_graph
  */
 dependencies {
-    //runtimeOnlyNonPublishable("com.github.GTNewHorizons:NotEnoughItems:2.7.69-GTNH:dev")
+    def hbmJars = fileTree(dir: 'libs', include: 'HBM-NTM-*.jar').files.toList()
+    if (hbmJars.isEmpty()) {
+        throw new GradleException(
+            "\n\nNo HBM jar found in libs/.\n" +
+            "Place the HBM Nuclear Tech Mod release JAR in the libs/ directory before building.\n" +
+            "See docs/BUILD_GUIDE.md for instructions.\n")
+    }
+    if (hbmJars.size() > 1) {
+        throw new GradleException(
+            "\n\nMultiple JARs found in libs/: ${hbmJars.collect { it.name }.join(', ')}.\n" +
+            "Keep only one HBM jar in libs/ at a time.\n")
+    }
+    devOnlyNonPublishable(rfg.deobf(project.files(hbmJars[0])))
+
 }

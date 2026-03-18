@@ -3,19 +3,19 @@
 	"modList": [{
 		"modid": "${modId}",
 		"name": "${modName}",
-		"description": "An example mod for Minecraft 1.7.10 with Forge focused on a stable setup.",
+		"description": "NTM Fluid to Forge Fluid Bridge",
 		"version": "${modVersion}",
 		"mcversion": "${minecraftVersion}",
-		"url": "https://github.com/SinTh0r4s/MyMod",
+		"url": "https://github.com/Justus0405/NTM-Fluid-Converters",
 		"updateUrl": "",
-		"authorList": ["SinTho0r4s"],
-		"credits": "",
+		"authorList": ["Justus0405"],
+		"credits": "HbmMods and JameH2",
 		"logoFile": "",
 		"screenshots": [],
 		"parent": "",
-		"requiredMods": [],
-		"dependencies": [],
+		"requiredMods": ["hbm"],
+		"dependencies": ["hbm"],
 		"dependants": [],
-		"useDependencyInformation": false
+		"useDependencyInformation": true
 	}]
 }
