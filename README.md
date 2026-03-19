@@ -1,4 +1,4 @@
-<img width="2048" height="286" alt="README_TITLE" src="https://github.com/user-attachments/assets/cd92a871-76a7-47e7-b664-53a9971e5fd3" />
+<img width="2048" height="286" alt="README_TITLE" src="https://github.com/user-attachments/assets/cd92a871-76a7-47e7-b664-53a9971e5fd3" /><br>
 
 <p align="center">
      <!-- Discord Badge -->
