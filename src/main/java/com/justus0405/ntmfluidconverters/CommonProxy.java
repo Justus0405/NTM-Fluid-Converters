@@ -14,5 +14,8 @@ public class CommonProxy {
         FluidConverter.registerHbmFluidsInForge();
     }
 
-    public void postInit(FMLPostInitializationEvent event) {}
+    @SuppressWarnings("unused")
+    public void postInit(FMLPostInitializationEvent event) {
+        ModRecipes.register();
+    }
 }
