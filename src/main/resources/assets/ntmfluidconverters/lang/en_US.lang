@@ -1,228 +1,248 @@
 tile.hbm_to_forge.name=HBM to Forge Fluid Converter
 tile.forge_to_hbm.name=Forge to HBM Fluid Converter
 
-# Fluid display names for HBM fluids registered into Forge.
-# Keys follow Forge's fluid.* naming convention.
-# Display names sourced from HBM's hbmfluid.* lang entries where available.
-# Only fluids without HBM lang coverage use derived names.
-
-# Vanilla fallback
-fluid.water=Water
-fluid.lava=Lava
-
-# Gases
-fluid.air=Air
-fluid.hydrogen=Hydrogen
-fluid.oxygen=Oxygen
-fluid.nitrogen=Nitrogen
-fluid.chlorine=Chlorine
-fluid.xenon=Xenon
-fluid.neon=Neon
-fluid.argon=Argon
-fluid.krypton=Krypton
-fluid.helium3=Helium-3
-fluid.helium4=Helium-4
-fluid.carbondioxide=Carbon Dioxide
-fluid.deuterium=Deuterium
-fluid.tritium=Tritium
-fluid.ammonia=Ammonia
-fluid.oxyhydrogen=Oxyhydrogen
-
-# Steam variants 
-fluid.steam=Steam
-fluid.hotsteam=Hot Steam
-fluid.superhotsteam=Super Hot Steam
-fluid.ultrahotsteam=Ultra Hot Steam
-fluid.spentsteam=Spent Steam
-
-# Coolants 
-fluid.coolant=Coolant
-fluid.coolant_hot=Hot Coolant
-fluid.cryogel=Cryogel
-fluid.perfluoromethyl=Perfluoromethyl
-fluid.perfluoromethyl_cold=Cold Perfluoromethyl
-fluid.perfluoromethyl_hot=Hot Perfluoromethyl
-
-# Crude oils and fractions 
-fluid.oil=Oil
-fluid.oil_ds=Desulfurized Oil
-fluid.crackoil=Cracked Oil
-fluid.crackoil_ds=Desulfurized Cracked Oil
-fluid.coaloil=Coal Oil
-fluid.hotoil=Hot Oil
-fluid.hotoil_ds=Desulfurized Hot Oil
-fluid.hotcrackoil=Hot Cracked Oil
-fluid.hotcrackoil_ds=Desulfurized Hot Cracked Oil
-fluid.heavyoil=Heavy Oil
-fluid.heavyoil_vacuum=Vacuum Heavy Oil
-fluid.bitumen=Bitumen
-fluid.smear=Smear
-fluid.heatingoil=Heating Oil
-fluid.heatingoil_vacuum=Vacuum Heating Oil
-fluid.reclaimed=Reclaimed Oil
-fluid.oil_coker=Coker Oil
-
-# Refined fuels 
-fluid.lubricant=Lubricant
-fluid.naphtha=Naphtha
-fluid.naphtha_crack=Cracked Naphtha
-fluid.naphtha_ds=Desulfurized Naphtha
-fluid.naphtha_coker=Coker Naphtha
-fluid.diesel=Diesel
-fluid.diesel_crack=Cracked Diesel
-fluid.diesel_reform=Reformed Diesel
-fluid.diesel_crack_reform=Cracked Reformed Diesel
-fluid.lightoil=Light Oil
-fluid.lightoil_crack=Cracked Light Oil
-fluid.lightoil_ds=Desulfurized Light Oil
-fluid.lightoil_vacuum=Vacuum Light Oil
-fluid.kerosene=Kerosene
-fluid.kerosene_reform=Reformed Kerosene
-fluid.gas=Gas
-fluid.gas_coker=Coker Gas
-fluid.petroleum=Petroleum
-fluid.lpg=LPG
-fluid.aromatics=Aromatics
-fluid.unsaturateds=Unsaturateds
-fluid.petroil=Petroil
-fluid.petroil_leaded=Leaded Petroil
-fluid.gasoline=Gasoline
-fluid.gasoline_leaded=Leaded Gasoline
-fluid.coalgas=Coal Gas
-fluid.coalgas_leaded=Leaded Coal Gas
-fluid.fracksol=Fracking Solution
-fluid.reformate=Reformate
-fluid.sourgas=Sour Gas
-fluid.xylene=Xylene
-fluid.reformgas=Reform Gas
-
-# Bio / organic fuels 
-fluid.biogas=Biogas
-fluid.biofuel=Biofuel
-fluid.ethanol=Ethanol
-fluid.syngas=Syngas
-
-# Water variants 
-fluid.heavywater=Heavy Water
-fluid.heavywater_hot=Hot Heavy Water
-
-# Nuclear / exotic fluids 
-fluid.nitan=Nitan
-fluid.uf6=UF6
-fluid.puf6=PUF6
-fluid.sas3=SAS3
-fluid.schrabidic=Schrabidic Acid
-fluid.amat=AMAT
-fluid.aschrab=Aschrab
-fluid.balefire=Balefire
-fluid.stellar_flux=Stellar Flux
-fluid.dhc=DHC
-fluid.radiosolvent=Radiosolvent
-fluid.iongel=Ion Gel
-
-# Plasma 
-fluid.plasma_dt=Deuterium-Tritium Plasma
-fluid.plasma_hd=Heavy Deuterium Plasma
-fluid.plasma_ht=Heavy Tritium Plasma
-fluid.plasma_dh3=Deuterium-Helium3 Plasma
-fluid.plasma_xm=XM Plasma
-fluid.plasma_bf=Balefire Plasma
-
-# Chemicals and acids 
-fluid.sulfuric_acid=Sulfuric Acid
-fluid.nitric_acid=Nitric Acid
-fluid.hydrazine=Hydrazine
-fluid.phosgene=Phosgene
-fluid.mustardgas=Mustard Gas
-fluid.peroxide=Peroxide
-fluid.acid=Acid
-fluid.hcl=Hydrochloric Acid
-fluid.mercury=Mercury
-fluid.nitroglycerin=Nitroglycerin
-fluid.colloid=Colloid
-fluid.solvent=Solvent
-fluid.minsol=Mineral Solution
-fluid.vitriol=Vitriol
-fluid.lye=Lye
-fluid.sodium_aluminate=Sodium Aluminate
-fluid.bauxite_solution=Bauxite Solution
-fluid.alumina=Alumina
-fluid.concrete=Concrete
-fluid.watz=Watz
-fluid.fullerene=Fullerene
-
-# Metals (liquid) 
-fluid.sodium=Sodium
-fluid.sodium_hot=Hot Sodium
-fluid.lead=Lead
-fluid.lead_hot=Hot Lead
-fluid.thorium_salt=Thorium Salt
-fluid.thorium_salt_hot=Hot Thorium Salt
-fluid.thorium_salt_depleted=Depleted Thorium Salt
-fluid.redmud=Red Mud
-
-# Chlorocalcite process 
-fluid.chlorocalcite_solution=Chlorocalcite Solution
-fluid.chlorocalcite_mix=Chlorocalcite Mix
-fluid.chlorocalcite_cleaned=Cleaned Chlorocalcite
-fluid.potassium_chloride=Potassium Chloride
-fluid.calcium_chloride=Calcium Chloride
-fluid.calcium_solution=Calcium Solution
-
-# Biological and organic 
-fluid.blood=Blood
-fluid.blood_hot=Hot Blood
-fluid.bloodgas=Blood Gas
-fluid.xpjuice=XP Juice
-fluid.enderjuice=Ender Juice
-fluid.pheromone=Pheromone
-fluid.pheromone_m=Male Pheromone
-fluid.salient=Salient
-fluid.pain=Pain
-fluid.death=Death
-
-# Waste products 
-fluid.wastefluid=Waste Fluid
-fluid.wastegas=Waste Gas
-fluid.smoke=Smoke
-fluid.smoke_leaded=Leaded Smoke
-fluid.smoke_poison=Poisonous Smoke
-fluid.slop=Slop
-
-# Food and drink 
-fluid.coffee=Coffee
-fluid.tea=Tea
-fluid.honey=Honey
-fluid.milk=Milk
-fluid.smilk=Spoiled Milk
-fluid.emilk=Enchanted Milk
-fluid.cmilk=Cursed Milk
-fluid.cream=Cream
-fluid.egg=Egg
-fluid.cholesterol=Cholesterol
-
-# Oils (non-petroleum) 
-fluid.woodoil=Wood Oil
-fluid.fishoil=Fish Oil
-fluid.sunfloweroil=Sunflower Oil
-fluid.oliveoil=Olive Oil
-fluid.coalcreosote=Coal Creosote
-fluid.seedslurry=Seed Slurry
-
-# Miscellaneous 
-fluid.estradiol=Estradiol
-fluid.mug=Mug
-fluid.mug_hot=Hot Mug
-fluid.elbowgrease=Elbow Grease
-fluid.nmasstetranol=NMass Tetranol
-fluid.nmass=NMass
-fluid.rizz=Rizz
-fluid.htco4=HTcO4
-
-# Glitched Fluids
+# Edge Cases
 fluid.corium=Corium (Glitched)
+fluid.custom_demo=Custom Demo (Glitched)
 fluid.sulfuric_acid_fluid=Sulfuric Acid (Glitched)
 fluid.ccl_fluid=Carbon Tetrachloride (Glitched)
 fluid.mercury_fluid=Mercury (Glitched)
 fluid.bromine_fluid=Alkyl Bromide (Glitched)
 fluid.redplasma=Red Plasma (Glitched)
+
+# Complete language keys sourced from both HBM versions (Currently using JameH2).
+#   HBM original : https://github.com/HbmMods/Hbm-s-Nuclear-Tech-GIT/blob/master/src/main/resources/assets/hbm/lang/en_US.lang
+#   JameH2 fork  : https://github.com/JameH2/Hbm-s-Nuclear-Tech-GIT/blob/space-travel-twopointfive/src/main/resources/assets/hbm/lang/en_US.lang
+
+fluid.acid_fluid=Acid
+fluid.corium_fluid=Corium
+fluid.mud_fluid=Poisonous Mud
+fluid.rad_lava_fluid=Volcanic Lava
+fluid.schrabidic_fluid=Schrabidic Acid
+fluid.toxic_fluid=Stereotypical Green Ooze
+fluid.volcanic_lava_fluid=Volcanic Lava
+fluid.oliveoil=Olive Oil
+fluid.honey=Honey
+fluid.tea=Tea
+fluid.coffee=Coffee
+fluid.krypton=Krypton Gas
+fluid.aqueous_copper=Aqueous Copper
+fluid.aqueous_nickel=Aqueous Nickel
+fluid.argon=Argon Gas
+fluid.neon=Neon Gas
+fluid.alumina=Alumina
+fluid.amat=Antimatter
+fluid.ammonia=Ammonia
+fluid.air=Compressed Air
+fluid.aromatics=Aromatic Hydrocarbons
+fluid.aschrab=Antischrabidium
+fluid.balefire=BF Rocket Fuel
+fluid.blood=Blood
+fluid.bloodgas=Blood Fuel
+fluid.bauxite_solution=Bauxite Solution
+fluid.biofuel=Biofuel
+fluid.biogas=Biogas
+fluid.bitumen=Bitumen
+fluid.blood=Blood
+fluid.blood_hot=Hot Blood
+fluid.brine=Brine
+fluid.calcium_chloride=Calciumchloride Solution
+fluid.calcium_solution=Calcium Solution
+fluid.carbondioxide=Carbon Dioxide
+fluid.chlorine=Chlorine Gas
+fluid.chlorocalcite_cleaned=Cleaned Chlorocalcite Solution
+fluid.chlorocalcite_mix=Mixed Chlorocalcite Solution
+fluid.chlorocalcite_solution=Chlorocalcite Solution
+fluid.cholesterol=Cholesterol Solution
+fluid.coalcreosote=Coal Tar Creosote
+fluid.coalgas=Coal Gasoline
+fluid.coalgas_leaded=Leaded Coal Gasoline
+fluid.coaloil=Coal Oil
+fluid.colloid=Colloid
+fluid.concrete=Liquid Concrete
+fluid.coolant=Coolant
+fluid.coolant_hot=Hot Coolant
+fluid.conglomera=Conglomera
+fluid.coppersulfate=Copper Sulfate
+fluid.cmilk=Condensed Milk
+fluid.cbenz=Chlorinated Benzenes
+fluid.ccl=Carbon Tetrachloride
+fluid.cream=Heavy Whipping Cream
+fluid.crackoil=Cracked Oil
+fluid.crackoil_ds=Desulfurized Cracked Oil
+fluid.cryogel=Cryogel
+fluid.death=Osmiridic Solution
+fluid.deuterium=Deuterium
+fluid.dhc=Deuterated Hydrocarbon
+fluid.diesel=Diesel
+fluid.diesel_crack=Cracked Diesel
+fluid.diesel_crack_reform=High-Cetane Cracked Diesel
+fluid.diesel_reform=High-Cetane Diesel
+fluid.dicyanoacetylene=Dicyanoacetylene
+fluid.dunaair=Duna Air
+fluid.earthair=Oxygen-Rich Air
+fluid.emilk=Evaporated Milk
+fluid.egg=Dissolved Egg
+fluid.estradiol=Estradiol Solution
+fluid.ethanol=Ethanol
+fluid.enderjuice=Ender Juice
+fluid.eveair=Eve Air
+fluid.fishoil=Fish Oil
+fluid.fracksol=Fracking Solution
+fluid.fluorine=Fluorine
+fluid.fullerene=Fullerene Solution
+fluid.gas=Natural Gas
+fluid.gas_coker=Coker Gas
+fluid.gasoline=Gasoline
+fluid.gasoline_leaded=Leaded Gasoline
+fluid.heatingoil=Heating Oil
+fluid.halolight=Light Halocarbons
+fluid.hgas=Halide Gas
+fluid.heatingoil_vacuum=Heavy Heating Oil
+fluid.heavyoil=Heavy Oil
+fluid.heavyoil_vacuum=Vacuum Heavy Oil
+fluid.heavywater=Heavy Water
+fluid.heavywater_hot=Hot Heavy Water
+fluid.helium3=Helium-3
+fluid.helium4=Helium-4
+fluid.hotcrackoil=Hot Cracked Oil
+fluid.hotcrackoil_ds=Desulfurized Hot Cracked Oil
+fluid.hotoil=Hot Crude Oil
+fluid.hotoil_ds=Desulfurized Hot Crude Oil
+fluid.hotsteam=Dense Steam
+fluid.hydrogen=Liquid Hydrogen
+fluid.superheated_hydrogen=Superheated Hydrogen
+fluid.gas_watz=Gaseous Poisonous Mud
+fluid.uranium_bromide=Uranium Bromide
+fluid.plutonium_bromide=Plutonium Bromide
+fluid.schrabidium_bromide=Schrabidium Bromide
+fluid.tcrude=Tektonic Crude
+fluid.thorium_bromide=Thorium Bromide
+fluid.gaseous_uranium_bromide=Gaseous Uranium Bromide
+fluid.gaseous_plutonium_bromide=Gaseous Plutonium Bromide
+fluid.gaseous_schrabidium_bromide=Gaseous Schrabidium Bromide
+fluid.gaseous_thorium_bromide=Gaseous Thorium Bromide
+fluid.hydrazine=Hydrazine
+fluid.iongel=Ionic Gel
+fluid.joolgas=Jool Air
+fluid.kerosene=Kerosene
+fluid.kerosene_reform=Jet Fuel
+fluid.kerosene_reform=Jet Fuel
+fluid.kmno4=Potassium Permanganate Solution
+fluid.lava=Lava
+fluid.lead=Liquid Lead
+fluid.lead_hot=Hot Liquid Lead
+fluid.lightoil=Light Oil
+fluid.lightoil_crack=Cracked Light Oil
+fluid.lightoil_ds=Desulfurized Light Oil
+fluid.lightoil_vacuum=Vacuum Light Oil
+fluid.lithydro=Lithium Hydroxide Aerosol
+fluid.lithcarbonate=Lithium Bicarbonate Aerosol
+fluid.lpg=LPG
+fluid.lubricant=Engine Lubricant
+fluid.lye=Lye
+fluid.mercury=Mercury
+fluid.chloromethane=Chloromethane
+fluid.chloroethane=Chloroethane
+fluid.methanol=Methanol
+fluid.bromine=Alkyl Bromide
+fluid.magma=Magma
+fluid.methylene=Methylene
+fluid.mug=Mug Root Beer
+fluid.mug_hot=Hot Mug Root Beer
+fluid.mustardgas=Mustard Gas
+fluid.minsol=Mineral Slurry
+fluid.mslurry=Morkite Slurry
+fluid.morkite=Morkite
+fluid.morkine=Morkine
+fluid.naphtha=Naphtha
+fluid.naphtha_coker=Coker Naphtha
+fluid.naphtha_crack=Cracked Naphtha
+fluid.naphtha_ds=Desulfurized Naphtha
+fluid.ngas=Neidon Air
+fluid.nitan=NITAN© 100 Octane Super Fuel
+fluid.nitric_acid=Nitric Acid
+fluid.hcl=Hydrochloric Acid
+fluid.htco4=Pertechnetic Acid
+fluid.nitrogen=Liquid Nitrogen
+fluid.elbowgrease=Elbow Grease
+fluid.nmasstetranol=N-MASS(III) Tetrahexaethanol
+fluid.nmass=N-MASS(II) Driver Fuel
+fluid.nitroglycerin=Nitroglycerin
+fluid.none=None
+fluid.oil=Crude Oil
+fluid.oil_coker=Coker Oil
+fluid.oil_ds=Desulfurized Crude Oil
+fluid.oxygen=Liquid Oxygen
+fluid.oxyhydrogen=Oxyhydrogen
+fluid.pain=Pandemonium(III)tantalite Solution
+fluid.perfluoromethyl=Perfluoromethyl
+fluid.perfluoromethyl_cold=Cold Perfluoromethyl
+fluid.perfluoromethyl_hot=Hot Perfluoromethyl
+fluid.peroxide=Hydrogen Peroxide
+fluid.petroil=Petroil
+fluid.petroil_leaded=Leaded Petroil
+fluid.petroleum=Petroleum Gas
+fluid.pheromone=Booster Pheromone
+fluid.pheromone_m=Modified Booster Pheromone
+fluid.phosgene=Phosgene
+fluid.plasma_bf=Balefire Plasma
+fluid.plasma_dh3=Deuterium-Helium-3 Plasma
+fluid.plasma_dt=Deuterium-Tritium Plasma
+fluid.plasma_hd=Hydrogen-Deuterium Plasma
+fluid.plasma_ht=Hydrogen-Tritium Plasma
+fluid.plasma_xm=Helium-4-Oxygen Plasma
+fluid.polythylene=Polythylene
+fluid.potassium_chloride=Potassiumchloride Solution
+fluid.puf6=Plutonium Hexafluoride
+fluid.radiosolvent=High-Performance Solvent
+fluid.reclaimed=Reclaimed Industrial Oil
+fluid.redmud=Red Mud
+fluid.reformate=Reformate
+fluid.reformgas=Reformate Gas
+fluid.rizz=Cum
+fluid.salient=Salient Green
+fluid.sarnusgas=Sarnus Air
+fluid.sas3=Schrabidium Trisulfide
+fluid.schrabidic=Schrabidic Acid
+fluid.seedslurry=Seeding Slurry
+fluid.slop=Ore Slop
+fluid.smear=Industrial Oil
+fluid.smoke=Smoke
+fluid.smoke_leaded=Leaded Smoke
+fluid.smoke_poison=Poison Smoke
+fluid.sodium=Liquid Sodium
+fluid.sodium_hot=Hot Liquid Sodium
+fluid.sodium_aluminate=Sodium Aluminate
+fluid.solvent=Solvent
+fluid.sourgas=Sour Gas
+fluid.spentsteam=Low-Pressure Steam
+fluid.steam=Steam
+fluid.stellar_flux=Stellar Flux
+fluid.sulfuric_acid=Sulfuric Acid
+fluid.sunfloweroil=Sunflower Seed Oil
+fluid.superhotsteam=Super Dense Steam
+fluid.syngas=Syngas
+fluid.tektoair=Tekto Air
+fluid.thorium_salt=Liquid Thorium Salt
+fluid.thorium_salt_depleted=Depleted Liquid Thorium Salt
+fluid.thorium_salt_hot=Hot Liquid Thorium Salt
+fluid.tritium=Tritium
+fluid.uf6=Uranium Hexafluoride
+fluid.ugas=Urlum Air
+fluid.ultrahotsteam=Ultra Dense Steam
+fluid.unsaturateds=Unsaturated Hydrocarbons
+fluid.vitriol=Vitriol
+fluid.vinyl=Vinyl Chloride
+fluid.wastefluid=Liquid Nuclear Waste
+fluid.wastegas=Gaseous Nuclear Waste
+fluid.water=Water
+fluid.watz=Poisonous Mud
+fluid.woodoil=Wood Oil
+fluid.xenon=Xenon Gas
+fluid.xpjuice=Experience Juice
+fluid.xylene=BTX
+fluid.smilk=Strawberry Milk
+fluid.milk=Milk
+fluid.scutterblood=Scutterblood
+fluid.polythylene=Polyethylene
