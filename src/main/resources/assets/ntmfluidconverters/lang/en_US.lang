@@ -218,3 +218,11 @@ fluid.nmasstetranol=NMass Tetranol
 fluid.nmass=NMass
 fluid.rizz=Rizz
 fluid.htco4=HTcO4
+
+# Glitched Fluids
+fluid.corium=Corium (Glitched)
+fluid.sulfuric_acid_fluid=Sulfuric Acid (Glitched)
+fluid.ccl_fluid=Carbon Tetrachloride (Glitched)
+fluid.mercury_fluid=Mercury (Glitched)
+fluid.bromine_fluid=Alkyl Bromide (Glitched)
+fluid.redplasma=Red Plasma (Glitched)
