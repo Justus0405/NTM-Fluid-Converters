@@ -1,7 +1,17 @@
+# NTM Fluid Converter Blocks
 tile.hbm_to_forge.name=HBM to Forge Fluid Converter
 tile.forge_to_hbm.name=Forge to HBM Fluid Converter
 
-# Edge Cases
+# Legacy Fluids
+fluid.acid_fluid=Acid (Legacy)
+fluid.corium_fluid=Corium (Legacy)
+fluid.mud_fluid=Poisonous Mud (Legacy)
+fluid.rad_lava_fluid=Volcanic Lava (Legacy)
+fluid.schrabidic_fluid=Schrabidic Acid (Legacy)
+fluid.toxic_fluid=Stereotypical Green Ooze (Legacy)
+fluid.volcanic_lava_fluid=Volcanic Lava (Legacy)
+
+# Glitched Fluids
 fluid.corium=Corium (Glitched)
 fluid.custom_demo=Custom Demo (Glitched)
 fluid.sulfuric_acid_fluid=Sulfuric Acid (Glitched)
@@ -10,18 +20,20 @@ fluid.mercury_fluid=Mercury (Glitched)
 fluid.bromine_fluid=Alkyl Bromide (Glitched)
 fluid.redplasma=Red Plasma (Glitched)
 
+# Removed Fluids
+fluid.oliveoil=Olive Oil (Removed)
+fluid.plutonium_bromide=Plutonium Bromide (Removed)
+fluid.schrabidium_bromide=Schrabidium Bromide (Removed)
+fluid.methylene=Methylene (Removed)
+fluid.mslurry=Morkite Slurry (Removed)
+fluid.morkite=Morkite (Removed)
+fluid.morkine=Morkine (Removed)
+fluid.rizz=Cum (Removed)
+
 # Complete language keys sourced from both HBM versions (Currently using JameH2).
 #   HBM original : https://github.com/HbmMods/Hbm-s-Nuclear-Tech-GIT/blob/master/src/main/resources/assets/hbm/lang/en_US.lang
 #   JameH2 fork  : https://github.com/JameH2/Hbm-s-Nuclear-Tech-GIT/blob/space-travel-twopointfive/src/main/resources/assets/hbm/lang/en_US.lang
 
-fluid.acid_fluid=Acid
-fluid.corium_fluid=Corium
-fluid.mud_fluid=Poisonous Mud
-fluid.rad_lava_fluid=Volcanic Lava
-fluid.schrabidic_fluid=Schrabidic Acid
-fluid.toxic_fluid=Stereotypical Green Ooze
-fluid.volcanic_lava_fluid=Volcanic Lava
-fluid.oliveoil=Olive Oil
 fluid.honey=Honey
 fluid.tea=Tea
 fluid.coffee=Coffee
@@ -114,8 +126,6 @@ fluid.hydrogen=Liquid Hydrogen
 fluid.superheated_hydrogen=Superheated Hydrogen
 fluid.gas_watz=Gaseous Poisonous Mud
 fluid.uranium_bromide=Uranium Bromide
-fluid.plutonium_bromide=Plutonium Bromide
-fluid.schrabidium_bromide=Schrabidium Bromide
 fluid.tcrude=Tektonic Crude
 fluid.thorium_bromide=Thorium Bromide
 fluid.gaseous_uranium_bromide=Gaseous Uranium Bromide
@@ -147,14 +157,10 @@ fluid.chloroethane=Chloroethane
 fluid.methanol=Methanol
 fluid.bromine=Alkyl Bromide
 fluid.magma=Magma
-fluid.methylene=Methylene
 fluid.mug=Mug Root Beer
 fluid.mug_hot=Hot Mug Root Beer
 fluid.mustardgas=Mustard Gas
 fluid.minsol=Mineral Slurry
-fluid.mslurry=Morkite Slurry
-fluid.morkite=Morkite
-fluid.morkine=Morkine
 fluid.naphtha=Naphtha
 fluid.naphtha_coker=Coker Naphtha
 fluid.naphtha_crack=Cracked Naphtha
@@ -200,7 +206,6 @@ fluid.reclaimed=Reclaimed Industrial Oil
 fluid.redmud=Red Mud
 fluid.reformate=Reformate
 fluid.reformgas=Reformate Gas
-fluid.rizz=Cum
 fluid.salient=Salient Green
 fluid.sarnusgas=Sarnus Air
 fluid.sas3=Schrabidium Trisulfide

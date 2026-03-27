@@ -9,7 +9,16 @@ import zlib
 #   JameH2 fork  : https://github.com/JameH2/Hbm-s-Nuclear-Tech-GIT/blob/space-travel-twopointfive/src/main/java/com/hbm/inventory/fluid/Fluids.java
 
 FLUIDS = {
-    "custom_demo": 0xff0000,
+    "fallback": 0xeed202,            # Edge Case
+    "custom_demo": 0xff0000,         # Edge Case
+    "oliveoil": 0xA9B98E,            # Removed
+    "plutonium_bromide": 0x888888,   # Removed
+    "schrabidium_bromide": 0x888888, # Removed
+    "methylene": 0x888888,           # Removed
+    "mslurry": 0x364D47,             # Removed
+    "morkite": 0x333C42,             # Removed
+    "morkine": 0x796089,             # Removed
+    "rizz": 0x53A9F4,                # Removed
     "none": 0x888888,
     "water": 0x3333FF,
     "steam": 0xe5e5e5,
