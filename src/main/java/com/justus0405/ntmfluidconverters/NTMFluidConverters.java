@@ -27,6 +27,7 @@ public class NTMFluidConverters {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        ModConfig.loadConfig(event);
         proxy.preInit(event);
     }
 

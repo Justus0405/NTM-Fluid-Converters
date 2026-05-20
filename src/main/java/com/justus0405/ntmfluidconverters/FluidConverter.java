@@ -44,6 +44,7 @@ public class FluidConverter {
     }
 
     // Fallback display name for fluids not in the lang file, just capitalize each word.
+    @SuppressWarnings("SizeReplaceableByIsEmpty")
     public static String generateFallbackName(String forgeName) {
         String[] parts = forgeName.split("_");
         StringBuilder sb = new StringBuilder();
@@ -85,7 +86,7 @@ public class FluidConverter {
 
                 if (!hasTexture(forgeName)) {
                     NTMFluidConverters.LOG.warn(
-                        "[{}] No texture found for fluid '{}' — using fallback texture",
+                        "[{}] No texture found for fluid '{}'! using fallback texture",
                         NTMFluidConverters.MODID,
                         forgeName);
                 }
@@ -106,7 +107,7 @@ public class FluidConverter {
                 .equals(key)) {
                 String generated = generateFallbackName(forgeName);
                 NTMFluidConverters.LOG.warn(
-                    "[{}] No lang entry found for fluid '{}' — using generated name '{}'",
+                    "[{}] No lang entry found for fluid '{}'! using generated name '{}'",
                     NTMFluidConverters.MODID,
                     forgeName,
                     generated);

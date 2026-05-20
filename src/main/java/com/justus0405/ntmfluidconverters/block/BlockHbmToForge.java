@@ -18,7 +18,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * <p>
  * Connect HBM fluid pipes to any face to push fluid in.
  * Connect Forge fluid pipes/tanks to any face to pull fluid out.
- * The internal buffer holds 8,000 mB (8 buckets) of a single fluid at a time.
+ * The internal buffer holds a configurable amount of a single fluid at a time.
  */
 public class BlockHbmToForge extends BlockContainer {
 

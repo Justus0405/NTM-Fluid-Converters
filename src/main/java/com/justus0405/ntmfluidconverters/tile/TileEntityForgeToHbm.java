@@ -12,13 +12,14 @@ import com.hbm.inventory.fluid.FluidType;
 import com.hbm.inventory.fluid.Fluids;
 import com.hbm.inventory.fluid.tank.FluidTank;
 import com.justus0405.ntmfluidconverters.FluidConverter;
+import com.justus0405.ntmfluidconverters.ModConfig;
 
 import api.hbm.fluidmk2.IFluidStandardSenderMK2;
 
 // Accepts fluid from Forge pipes and pushes it into HBM networks.
 public class TileEntityForgeToHbm extends TileEntity implements IFluidStandardSenderMK2, IFluidHandler {
 
-    private final FluidTank hbmTank = new FluidTank(Fluids.NONE, 8000);
+    private final FluidTank hbmTank = new FluidTank(Fluids.NONE, ModConfig.forgeToHbmBufferSize);
 
     // ILoadedTile
     @Override
@@ -115,6 +116,8 @@ public class TileEntityForgeToHbm extends TileEntity implements IFluidStandardSe
     public void readFromNBT(NBTTagCompound nbt) {
         super.readFromNBT(nbt);
         hbmTank.readFromNBT(nbt, "tank");
+        // HBM NBT includes maxFill, but config takes precedence.
+        hbmTank.changeTankSize(ModConfig.forgeToHbmBufferSize);
     }
 
     @Override
