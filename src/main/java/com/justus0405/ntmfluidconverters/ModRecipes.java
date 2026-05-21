@@ -30,8 +30,7 @@ public class ModRecipes {
         }
 
         // If not found.
-        NTMFluidConverters.LOG
-            .warn("[{}] Could not find Universal Fluid Duct! skipping converter recipes", NTMFluidConverters.MODID);
+        NTMFluidConverters.LOG.warn("Could not find Universal Fluid Duct! Skipping converter recipes");
         return null;
     }
 
@@ -46,8 +45,7 @@ public class ModRecipes {
         }
 
         // If not found.
-        NTMFluidConverters.LOG
-            .warn("[{}] Could not find Integrated Circuit Board! skipping converter recipes", NTMFluidConverters.MODID);
+        NTMFluidConverters.LOG.warn("Could not find Integrated Circuit Board! Skipping converter recipes");
         return null;
     }
 

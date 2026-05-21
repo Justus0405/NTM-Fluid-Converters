@@ -85,10 +85,7 @@ public class FluidConverter {
                 OUR_FLUIDS.add(forgeName);
 
                 if (!hasTexture(forgeName)) {
-                    NTMFluidConverters.LOG.warn(
-                        "[{}] No texture found for fluid '{}'! using fallback texture",
-                        NTMFluidConverters.MODID,
-                        forgeName);
+                    NTMFluidConverters.LOG.warn("No texture found for fluid '{}'! Using fallback texture", forgeName);
                 }
             }
         }
@@ -106,11 +103,8 @@ public class FluidConverter {
             if (StatCollector.translateToLocal(key)
                 .equals(key)) {
                 String generated = generateFallbackName(forgeName);
-                NTMFluidConverters.LOG.warn(
-                    "[{}] No lang entry found for fluid '{}'! using generated name '{}'",
-                    NTMFluidConverters.MODID,
-                    forgeName,
-                    generated);
+                NTMFluidConverters.LOG
+                    .warn("No lang entry found for fluid '{}'! Using generated name '{}'", forgeName, generated);
                 LanguageRegistry.instance()
                     .addStringLocalization(key, "en_US", generated);
             }
