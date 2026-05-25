@@ -13,7 +13,7 @@ The `libs/` folder isn't committed to the repo. Before building, grab a release 
 
 > [!IMPORTANT]
 > Without a JAR in `libs/` the build will fail with a clear error message.
-> With more than one JAR in `libs/` the build will also fail,keep only one jar there at a time.
+> With more than one JAR in `libs/` the build will also fail, keep only one jar there at a time.
 
 > [!IMPORTANT]
 > Java 25 is required.
