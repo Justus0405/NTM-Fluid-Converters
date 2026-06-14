@@ -30,7 +30,10 @@ No. This is an addon for NTM which works both with the original and space fork.
 **Can I use this for my Modpack?**<br>
 Absolutely!
 
-**The converter is not fast enough**<br>
+**Does it work with NTM version X?**<br>
+Yes. It always works with the latest NTM version. You do not need to update NTM Fluid Converters when NTM updates, unless the NTM mod author changes the internal fluid logic in a way that breaks this mod.
+
+**Why is the converter not fast enough?**<br>
 This is due to an internal tank limit of 8,000 mB. To increase the throughput you can edit the config file.
 
 # Issues & Support
