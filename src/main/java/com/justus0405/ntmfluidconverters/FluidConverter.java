@@ -1,6 +1,7 @@
 package com.justus0405.ntmfluidconverters;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
@@ -14,12 +15,12 @@ import com.hbm.inventory.fluid.Fluids;
 
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-// HBM uses ALL_UPPER_CASE for fluid names, Forge uses lower_case.
-// Simple toLowerCase/toUpperCase is good enough to map between them.
 public class FluidConverter {
 
     // tracks fluids we registered so the texture handler knows which ones to stitch.
     private static final Set<String> OUR_FLUIDS = new HashSet<>();
+
+    private static final HashMap<String, FluidType> FORGE_TO_HBM = new HashMap<>();
 
     public static Set<String> getOurFluids() {
         return Collections.unmodifiableSet(OUR_FLUIDS);
@@ -68,9 +69,7 @@ public class FluidConverter {
 
     public static FluidType getHbmFluid(Fluid forgeFluid) {
         if (forgeFluid == null) return Fluids.NONE;
-        FluidType result = Fluids.fromName(
-            forgeFluid.getName()
-                .toUpperCase(Locale.ROOT));
+        FluidType result = FORGE_TO_HBM.get(forgeFluid.getName());
         return result != null ? result : Fluids.NONE;
     }
 
@@ -88,6 +87,8 @@ public class FluidConverter {
                     NTMFluidConverters.LOG.warn("No texture found for fluid '{}'! Using fallback texture", forgeName);
                 }
             }
+
+            FORGE_TO_HBM.put(forgeName, hbmFluid);
         }
     }
 
