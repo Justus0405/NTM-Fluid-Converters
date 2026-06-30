@@ -233,6 +233,8 @@ FLUIDS = {
     "air": 0xE7EAEB,
     "lithydro": 0xD1CEBE,
     "lithcarbonate": 0xD1CEBE,
+    "airblast": 0xFFDADA,
+    "flue": 0x131313
 }
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
