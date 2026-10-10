@@ -1,5 +1,8 @@
 package com.justus0405.ntmfluidconverters.tile;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -11,7 +14,9 @@ import net.minecraftforge.fluids.IFluidHandler;
 import com.hbm.inventory.fluid.FluidType;
 import com.hbm.inventory.fluid.Fluids;
 import com.hbm.inventory.fluid.tank.FluidTank;
+import com.hbm.uninos.NodeNet;
 import com.justus0405.ntmfluidconverters.FluidConverter;
+import com.justus0405.ntmfluidconverters.FluidNetworkCompat;
 import com.justus0405.ntmfluidconverters.ModConfig;
 
 import api.hbm.fluidmk2.IFluidConnectorMK2;
@@ -21,11 +26,20 @@ import api.hbm.fluidmk2.IFluidStandardReceiverMK2;
 public class TileEntityHbmToForge extends TileEntity implements IFluidStandardReceiverMK2, IFluidHandler {
 
     private final FluidTank hbmTank = new FluidTank(Fluids.NONE, ModConfig.hbmToForgeBufferSize);
+    private final Set<NodeNet> subscribedNets = new HashSet<>();
+    private FluidType subscribedType = Fluids.NONE;
+    private boolean loaded = true;
 
     // ILoadedTile
     @Override
     public boolean isLoaded() {
-        return !isInvalid();
+        return loaded && !isInvalid();
+    }
+
+    @Override
+    public void onChunkUnload() {
+        super.onChunkUnload();
+        loaded = false;
     }
 
     // IFluidUserMK2
@@ -71,7 +85,13 @@ public class TileEntityHbmToForge extends TileEntity implements IFluidStandardRe
     public void updateEntity() {
         if (worldObj.isRemote) return;
 
-        // subscriptions expire so we re-subscribe every tick.
+        // X5808 times subscriptions out, X5842 does not, so drop ours ourselves when the type changes.
+        if (hbmTank.getTankType() != subscribedType) {
+            unsubscribeAll();
+            subscribedType = hbmTank.getTankType();
+        }
+
+        // subscriptions expire or get dropped, so we re-subscribe every tick.
         for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
             int nx = xCoord + dir.offsetX;
             int ny = yCoord + dir.offsetY;
@@ -81,15 +101,25 @@ public class TileEntityHbmToForge extends TileEntity implements IFluidStandardRe
             if (!(neighbor instanceof IFluidConnectorMK2)) continue;
 
             if (hbmTank.getTankType() != Fluids.NONE && hbmTank.getFill() > 0) {
-                trySubscribe(hbmTank.getTankType(), worldObj, nx, ny, nz, dir);
+                track(FluidNetworkCompat.subscribe(this, hbmTank.getTankType(), worldObj, nx, ny, nz, dir));
             } else {
                 // empty tank, subscribe for everything so we accept whatever comes in.
                 for (FluidType type : Fluids.getAll()) {
                     if (type == Fluids.NONE) continue;
-                    trySubscribe(type, worldObj, nx, ny, nz, dir);
+                    track(FluidNetworkCompat.subscribe(this, type, worldObj, nx, ny, nz, dir));
                 }
             }
         }
+    }
+
+    private void track(NodeNet net) {
+        if (net != null) subscribedNets.add(net);
+    }
+
+    @SuppressWarnings("unchecked")
+    private void unsubscribeAll() {
+        for (NodeNet net : subscribedNets) net.removeReceiver(this);
+        subscribedNets.clear();
     }
 
     // IFluidHandler drain only, Forge pipes can't push in.

@@ -1,5 +1,8 @@
 package com.justus0405.ntmfluidconverters.tile;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -11,7 +14,9 @@ import net.minecraftforge.fluids.IFluidHandler;
 import com.hbm.inventory.fluid.FluidType;
 import com.hbm.inventory.fluid.Fluids;
 import com.hbm.inventory.fluid.tank.FluidTank;
+import com.hbm.uninos.NodeNet;
 import com.justus0405.ntmfluidconverters.FluidConverter;
+import com.justus0405.ntmfluidconverters.FluidNetworkCompat;
 import com.justus0405.ntmfluidconverters.ModConfig;
 
 import api.hbm.fluidmk2.IFluidStandardSenderMK2;
@@ -20,11 +25,20 @@ import api.hbm.fluidmk2.IFluidStandardSenderMK2;
 public class TileEntityForgeToHbm extends TileEntity implements IFluidStandardSenderMK2, IFluidHandler {
 
     private final FluidTank hbmTank = new FluidTank(Fluids.NONE, ModConfig.forgeToHbmBufferSize);
+    private final Set<NodeNet> subscribedNets = new HashSet<>();
+    private FluidType subscribedType = Fluids.NONE;
+    private boolean loaded = true;
 
     // ILoadedTile
     @Override
     public boolean isLoaded() {
-        return !isInvalid();
+        return loaded && !isInvalid();
+    }
+
+    @Override
+    public void onChunkUnload() {
+        super.onChunkUnload();
+        loaded = false;
     }
 
     // IFluidUserMK2
@@ -43,14 +57,31 @@ public class TileEntityForgeToHbm extends TileEntity implements IFluidStandardSe
     @Override
     public void updateEntity() {
         if (worldObj.isRemote) return;
+
+        // X5808 times subscriptions out, X5842 does not, so drop ours ourselves when the type changes.
+        if (hbmTank.getTankType() != subscribedType) {
+            unsubscribeAll();
+            subscribedType = hbmTank.getTankType();
+        }
+
         if (hbmTank.getTankType() == Fluids.NONE || hbmTank.getFill() <= 0) return;
 
         for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
             int nx = xCoord + dir.offsetX;
             int ny = yCoord + dir.offsetY;
             int nz = zCoord + dir.offsetZ;
-            tryProvide(hbmTank, worldObj, nx, ny, nz, dir);
+            track(FluidNetworkCompat.provide(this, hbmTank, worldObj, nx, ny, nz, dir));
         }
+    }
+
+    private void track(NodeNet net) {
+        if (net != null) subscribedNets.add(net);
+    }
+
+    @SuppressWarnings("unchecked")
+    private void unsubscribeAll() {
+        for (NodeNet net : subscribedNets) net.removeProvider(this);
+        subscribedNets.clear();
     }
 
     // IFluidHandler fill only, can't drain from Forge side.
