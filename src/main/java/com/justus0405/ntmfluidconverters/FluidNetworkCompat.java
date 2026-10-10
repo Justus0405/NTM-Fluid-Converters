@@ -23,9 +23,9 @@ public final class FluidNetworkCompat {
 
     private FluidNetworkCompat() {}
 
-    public static NodeNet subscribe(IFluidReceiverMK2 receiver, FluidType type, World world, int x, int y, int z,
-        ForgeDirection dir) {
-        TileEntity te = TileAccessCache.getTileOrCache(world, x, y, z);
+    // The caller already resolved the neighbor, so the tile cache is only read once per type scan.
+    public static NodeNet subscribe(IFluidReceiverMK2 receiver, FluidType type, TileEntity te, World world, int x,
+        int y, int z, ForgeDirection dir) {
         if (!(te instanceof IFluidConnectorMK2)) return null;
 
         IFluidConnectorMK2 connector = (IFluidConnectorMK2) te;

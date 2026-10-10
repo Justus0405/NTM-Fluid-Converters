@@ -39,3 +39,4 @@ layout.json
 # Local dependency JARs (e.g. HBM) obtain separately, see docs/BUILD_GUIDE.md
 /libs/*
 !/libs/.gitkeep
+/HBM

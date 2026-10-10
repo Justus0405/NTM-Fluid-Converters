@@ -53,6 +53,13 @@ public class TileEntityForgeToHbm extends TileEntity implements IFluidStandardSe
         return new FluidTank[] { hbmTank };
     }
 
+    // The default implementation only writes the fill, so persist the change ourselves.
+    @Override
+    public void useUpFluid(FluidType type, int pressure, long amount) {
+        IFluidStandardSenderMK2.super.useUpFluid(type, pressure, amount);
+        if (amount > 0) markDirty();
+    }
+
     // Tick
     @Override
     public void updateEntity() {
@@ -64,7 +71,17 @@ public class TileEntityForgeToHbm extends TileEntity implements IFluidStandardSe
             subscribedType = hbmTank.getTankType();
         }
 
-        if (hbmTank.getTankType() == Fluids.NONE || hbmTank.getFill() <= 0) return;
+        // Nets are destroyed when their pipes break, so drop those references instead of keeping them.
+        subscribedNets.removeIf(net -> !net.isValid());
+
+        // An empty tank has to forget its type, otherwise it stays locked to the last fluid forever.
+        if (hbmTank.getFill() <= 0) {
+            if (hbmTank.getTankType() != Fluids.NONE) {
+                hbmTank.setTankType(Fluids.NONE);
+                markDirty();
+            }
+            return;
+        }
 
         for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
             int nx = xCoord + dir.offsetX;
@@ -103,6 +120,7 @@ public class TileEntityForgeToHbm extends TileEntity implements IFluidStandardSe
                 hbmTank.setTankType(hbmType);
             }
             hbmTank.setFill(hbmTank.getFill() + toFill);
+            markDirty();
         }
         return toFill;
     }

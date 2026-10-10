@@ -72,11 +72,17 @@ public class TileEntityHbmToForge extends TileEntity implements IFluidStandardRe
     public long transferFluid(FluidType type, int pressure, long amount) {
         if (pressure != 0) return amount;
         if (hbmTank.getTankType() != Fluids.NONE && hbmTank.getTankType() != type) return amount;
+        boolean changed = false;
         if (hbmTank.getTankType() != type) {
             hbmTank.setTankType(type);
+            changed = true;
         }
         int toAdd = (int) Math.min(amount, hbmTank.getMaxFill() - hbmTank.getFill());
-        hbmTank.setFill(hbmTank.getFill() + toAdd);
+        if (toAdd > 0) {
+            hbmTank.setFill(hbmTank.getFill() + toAdd);
+            changed = true;
+        }
+        if (changed) markDirty();
         return amount - toAdd;
     }
 
@@ -91,6 +97,14 @@ public class TileEntityHbmToForge extends TileEntity implements IFluidStandardRe
             subscribedType = hbmTank.getTankType();
         }
 
+        // Nets are destroyed when their pipes break, so drop those references instead of keeping them.
+        subscribedNets.removeIf(net -> !net.isValid());
+
+        // While the tank is empty we accept any fluid, so scan the whole registry. Both the list
+        // and the neighbour lookup are per tick, not per side, to keep the idle cost down.
+        boolean acceptAny = hbmTank.getTankType() == Fluids.NONE || hbmTank.getFill() <= 0;
+        FluidType[] allTypes = acceptAny ? Fluids.getAll() : null;
+
         // subscriptions expire or get dropped, so we re-subscribe every tick.
         for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
             int nx = xCoord + dir.offsetX;
@@ -100,14 +114,16 @@ public class TileEntityHbmToForge extends TileEntity implements IFluidStandardRe
             TileEntity neighbor = worldObj.getTileEntity(nx, ny, nz);
             if (!(neighbor instanceof IFluidConnectorMK2)) continue;
 
-            if (hbmTank.getTankType() != Fluids.NONE && hbmTank.getFill() > 0) {
-                track(FluidNetworkCompat.subscribe(this, hbmTank.getTankType(), worldObj, nx, ny, nz, dir));
-            } else {
-                // empty tank, subscribe for everything so we accept whatever comes in.
-                for (FluidType type : Fluids.getAll()) {
+            // Same neighbour for every fluid type, so resolve it once through the HBM cache.
+            TileEntity connector = TileAccessCache.getTileOrCache(worldObj, nx, ny, nz);
+
+            if (acceptAny) {
+                for (FluidType type : allTypes) {
                     if (type == Fluids.NONE) continue;
-                    track(FluidNetworkCompat.subscribe(this, type, worldObj, nx, ny, nz, dir));
+                    track(FluidNetworkCompat.subscribe(this, type, connector, worldObj, nx, ny, nz, dir));
                 }
+            } else {
+                track(FluidNetworkCompat.subscribe(this, hbmTank.getTankType(), connector, worldObj, nx, ny, nz, dir));
             }
         }
     }
@@ -130,7 +146,9 @@ public class TileEntityHbmToForge extends TileEntity implements IFluidStandardRe
 
     @Override
     public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain) {
-        if (resource == null || hbmTank.getFill() <= 0) return null;
+        if (resource == null || resource.getFluid() == null || resource.amount <= 0 || hbmTank.getFill() <= 0) {
+            return null;
+        }
         Fluid forgeFluid = FluidConverter.getForgeFluid(hbmTank.getTankType());
         if (forgeFluid == null || !forgeFluid.equals(resource.getFluid())) return null;
         int amount = Math.min(resource.amount, hbmTank.getFill());
@@ -140,7 +158,7 @@ public class TileEntityHbmToForge extends TileEntity implements IFluidStandardRe
 
     @Override
     public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain) {
-        if (hbmTank.getFill() <= 0) return null;
+        if (maxDrain <= 0 || hbmTank.getFill() <= 0) return null;
         Fluid forgeFluid = FluidConverter.getForgeFluid(hbmTank.getTankType());
         if (forgeFluid == null) return null;
         int amount = Math.min(maxDrain, hbmTank.getFill());
@@ -188,9 +206,11 @@ public class TileEntityHbmToForge extends TileEntity implements IFluidStandardRe
     }
 
     private void drainHbmTank(int amount) {
+        if (amount <= 0) return;
         hbmTank.setFill(hbmTank.getFill() - amount);
         if (hbmTank.getFill() == 0) {
             hbmTank.setTankType(Fluids.NONE);
         }
+        markDirty();
     }
 }
