@@ -1,5 +1,6 @@
 package com.justus0405.ntmfluidconverters;
 
+import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -40,7 +41,17 @@ public class FluidConverter {
 
     // Asset checks.
     public static boolean hasTexture(String forgeName) {
-        String path = "/assets/" + NTMFluidConverters.MODID + "/textures/blocks/fluids/" + forgeName + "_still.png";
+        return hasTexture(forgeName, "still");
+    }
+
+    // Still and flow are checked separately. The shipped pngs come in pairs, but a fork can ship only one.
+    public static boolean hasTexture(String forgeName, String variant) {
+        String path = "/assets/" + NTMFluidConverters.MODID
+            + "/textures/blocks/fluids/"
+            + forgeName
+            + "_"
+            + variant
+            + ".png";
         return FluidConverter.class.getResource(path) != null;
     }
 
@@ -73,6 +84,29 @@ public class FluidConverter {
         return result != null ? result : Fluids.NONE;
     }
 
+    // HBM never promised getColor as API, so look it up once instead of linking against it.
+    private static final Method HBM_GET_COLOR = findHbmGetColor();
+
+    private static Method findHbmGetColor() {
+        try {
+            return FluidType.class.getMethod("getColor");
+        } catch (NoSuchMethodException e) {
+            NTMFluidConverters.LOG
+                .warn("This HBM version does not expose fluid colors, only shipped textures will be used!");
+            return null;
+        }
+    }
+
+    // The RGB color HBM uses for this fluid, or -1 when this HBM version cannot provide one.
+    public static int getHbmFluidColor(FluidType hbmFluid) {
+        if (hbmFluid == null || hbmFluid == Fluids.NONE || HBM_GET_COLOR == null) return -1;
+        try {
+            return ((Integer) HBM_GET_COLOR.invoke(hbmFluid)) & 0xFFFFFF;
+        } catch (ReflectiveOperationException e) {
+            return -1;
+        }
+    }
+
     // Registration
     public static void registerHbmFluidsInForge() {
         for (FluidType hbmFluid : Fluids.getAll()) {
@@ -84,7 +118,8 @@ public class FluidConverter {
                 OUR_FLUIDS.add(forgeName);
 
                 if (!hasTexture(forgeName)) {
-                    NTMFluidConverters.LOG.warn("No texture found for fluid '{}'! Using fallback texture", forgeName);
+                    NTMFluidConverters.LOG
+                        .info("No shipped texture for fluid '{}'! Generating from the HBM color", forgeName);
                 }
             }
 
