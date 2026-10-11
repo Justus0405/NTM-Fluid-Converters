@@ -24,9 +24,10 @@ FluidConverter.java HBM to Forge fluid registration logic
 FluidNetworkCompat.java Network subscription for both HBM fluid API generations
 block/ Converter block implementations
 tile/ Converter tile entities
+client/ Texture stitching and runtime generated sprites
 src/main/resources/assets/ntmfluidconverters/
 lang/en_US.lang Block names and fluid display names
-textures/blocks/fluids/ Generated fluid textures, one still and one flow per fluid
+textures/blocks/fluids/ Shipped fluid textures, one still and one flow per fluid
 tools/
 generate_fluid_textures.py Texture generation script, do not delete
 
@@ -51,7 +52,7 @@ To build: drop any HBM jar into `libs/`, then run `./gradlew build`.
 
 **One jar, both HBM fluid APIs.** Newer HBM removed the trySubscribe and tryProvide defaults. FluidNetworkCompat.java reimplements them with UNINOS calls that exist in both generations, so never call those defaults directly and never reference new-only classes like TilePort. Keep shared code on symbols present in every supported HBM jar.
 
-**Data driven over hardcoded.** Fluid registration iterates `Fluids.getAll()` at runtime. Texture and lang assets cover both forks statically. Unknown future fluids fall back to a placeholder texture and a capitalized generated name with a startup warning.
+**Data driven over hardcoded.** Fluid registration iterates `Fluids.getAll()` at runtime. Shipped textures and lang entries cover both forks, and any fluid without a shipped texture gets a still and flow sprite generated at runtime from its HBM color. The fallback texture remains only for fluids whose color cannot be resolved. Unknown future fluids still get a capitalized generated name with a startup warning.
 
 **Comments are written by humans.** No em dashes, no decorative semicolons, no machine generated tone. Short plain sentences. Comments explain why, not what.
 
@@ -75,12 +76,10 @@ When HBM adds new fluids in a future version:
 
 1. Drop the new HBM jar into `libs/`
 2. Run `./gradlew build`
-3. Launch and check the log for missing texture or missing lang warnings
-4. For each warned fluid, find its name, color, and display name in HBM source
-5. Add color to `tools/generate_fluid_textures.py` keeping the alphabetical order
-6. Run the script to generate textures
-7. Add `fluid.<name>=Display Name` entry to `en_US.lang`
-8. Rebuild and confirm warnings are gone
+3. Launch and check the log for lang warnings or texture generation errors
+4. Fluids without a shipped png get a still and flow texture generated at runtime from their HBM color, so they already look right
+5. Optional, for curated assets and nicer names: add the color to `tools/generate_fluid_textures.py` keeping the alphabetical order, run the script to generate textures, and add a `fluid.<name>=Display Name` entry to `en_US.lang`
+6. Rebuild and confirm the warnings are gone
 
 ## Hard Rules
 
